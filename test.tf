@@ -33,9 +33,9 @@ resource "aws_instance" "test_instance2" {
     cpu_credits = "unlimited"
   }
   tags = {
-    git_commit           = "7ccefc5d5acbad9effccb3d162e2f0af2c04432e"
+    git_commit           = "d5010d930d5e5a0561f7de4d3a7fd7aea330f85a"
     git_file             = "test.tf"
-    git_last_modified_at = "2021-08-27 19:16:30"
+    git_last_modified_at = "2021-08-27 19:55:31"
     git_last_modified_by = "leon.allen@smartretire.com"
     git_modifiers        = "leon.allen"
     git_org              = "smartpension"
