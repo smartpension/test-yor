@@ -127,3 +127,16 @@ resource "aws_instance" "test_instance5" {
     yor_trace            = "74ac53c2-4f16-443e-aa1d-7cfadd753fbd"
   }
 }
+
+resource "aws_instance" "test_instance6" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro"
+
+  root_block_device {
+    encrypted = true
+  }
+
+  credit_specification {
+    cpu_credits = "unlimited"
+  }
+}
