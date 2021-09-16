@@ -116,4 +116,14 @@ resource "aws_instance" "test_instance5" {
   credit_specification {
     cpu_credits = "unlimited"
   }
+  tags = {
+    git_commit           = "554bae88c4f341078e7dda9e37776921ea7bec71"
+    git_file             = "test.tf"
+    git_last_modified_at = "2021-09-16 19:34:15"
+    git_last_modified_by = "leon.allen@smartretire.com"
+    git_modifiers        = "leon.allen"
+    git_org              = "smartpension"
+    git_repo             = "test-yor"
+    yor_trace            = "74ac53c2-4f16-443e-aa1d-7cfadd753fbd"
+  }
 }
