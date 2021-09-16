@@ -140,6 +140,7 @@ resource "aws_instance" "test_instance6" {
     cpu_credits = "unlimited"
   }
   tags = {
+    name                 = "test-instance-6"
     git_commit           = "20b5b31b743392a67311d53a7fc87d1d3f8fbe13"
     git_file             = "test.tf"
     git_last_modified_at = "2021-09-16 20:48:44"

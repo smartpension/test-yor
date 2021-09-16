@@ -18,6 +18,8 @@ jobs:
           ref: ${{ github.head_ref }}
       - name: Run yor action and commit
         uses: bridgecrewio/yor-action@main
+        with:
+          commit_changes: NO
       - name: Update resource tags
         uses: technote-space/create-pr-action@v2
         with:
