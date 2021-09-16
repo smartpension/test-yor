@@ -23,6 +23,9 @@ jobs:
       - name: Update resource tags
         uses: technote-space/create-pr-action@v2
         with:
+          EXECUTE_COMMANDS: |
+            git stage -A
+            git commit -m ''
           COMMIT_MESSAGE: 'Yor: update update resource tags'
           COMMIT_NAME: 'GitHub Actions: Yor'
           COMMIT_EMAIL: 'infra@smartpension.co.uk'
