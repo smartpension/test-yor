@@ -130,7 +130,7 @@ resource "aws_instance" "test_instance5" {
 
 resource "aws_instance" "test_instance6" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
 
   root_block_device {
     encrypted = true
@@ -141,9 +141,9 @@ resource "aws_instance" "test_instance6" {
   }
   tags = {
     name                 = "test-instance-6"
-    git_commit           = "7e5501dae005bf5243b299d622b059174bed6516"
+    git_commit           = "20b5b31b743392a67311d53a7fc87d1d3f8fbe13"
     git_file             = "test.tf"
-    git_last_modified_at = "2021-09-16 21:12:42"
+    git_last_modified_at = "2021-09-16 20:48:44"
     git_last_modified_by = "leon.allen@smartretire.com"
     git_modifiers        = "leon.allen"
     git_org              = "smartpension"
