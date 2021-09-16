@@ -16,17 +16,13 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
-      - name: Run yor action and commit
-        uses: bridgecrewio/yor-action@main
-        with:
-          commit_changes: NO
       - name: Update resource tags
         uses: technote-space/create-pr-action@v2
         with:
-          EXECUTE_COMMANDS: |
-            echo 'test'
           COMMIT_MESSAGE: 'Yor: update update resource tags'
           COMMIT_NAME: 'GitHub Actions: Yor'
           COMMIT_EMAIL: 'infra@smartpension.co.uk'
           PR_BRANCH_NAME: 'yor-tag-update-${PR_ID}'
           PR_TITLE: 'Yor: update resource tags'
+      - name: Run yor action and commit
+        uses: bridgecrewio/yor-action@main
