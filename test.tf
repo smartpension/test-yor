@@ -141,9 +141,9 @@ resource "aws_instance" "test_instance6" {
   }
   tags = {
     name                 = "test-instance-6"
-    git_commit           = "20b5b31b743392a67311d53a7fc87d1d3f8fbe13"
+    git_commit           = "64f0e0aa57b500290100c898f745bf8511dc792f"
     git_file             = "test.tf"
-    git_last_modified_at = "2021-09-16 20:48:44"
+    git_last_modified_at = "2021-09-17 19:34:35"
     git_last_modified_by = "leon.allen@smartretire.com"
     git_modifiers        = "leon.allen"
     git_org              = "smartpension"
