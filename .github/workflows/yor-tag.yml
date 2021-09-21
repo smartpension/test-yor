@@ -18,5 +18,6 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Run yor action and commit
         uses: smartpension/yor-tag-action@main
