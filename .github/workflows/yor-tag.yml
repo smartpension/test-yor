@@ -17,8 +17,4 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
       - name: Run yor action and commit
-        uses: bridgecrewio/yor-action@main
-        with:
-          commit_changes: NO
-      - name: Update resource tags
-        uses: peter-evans/create-pull-request@v3
+        uses: smartpension/yor-tag-action@main
