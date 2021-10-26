@@ -1,0 +1,49 @@
+name: Pull Request Automation
+concurrency: pr-${{ github.event.pull_request.head.ref }}
+on:
+  pull_request:
+    types: [edited, opened, synchronize, reopened]
+  workflow_dispatch:
+jobs:
+  pr-syntax-validation:
+    runs-on:
+      - self-hosted
+      - linux
+    steps:
+      - name: Validate PR Title
+        id: validate-title
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const prTitle = context.payload.pull_request.title;
+
+            const prTitleRegEx = /^\[(?<jiraTicket>[A-z]+\-[0-9]+)\]/;
+            const prTitleMatch = prTitle.match(prTitleRegEx);
+
+            if (prTitleMatch === null) {
+              core.setFailed('The Pull Request Title is not in the required syntax.');
+            } else {
+              core.exportVariable('PR_JIRA_TICKET', prTitleMatch.groups.jiraTicket);
+              core.info(`JIRA Ticket: ${prTitleMatch.groups.jiraTicket}`);
+            }
+      - name: Add JIRA Ticket Link to PR
+        id: jira-ticket-link
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const jiraTicketId = process.env.PR_JIRA_TICKET
+            let prBody = context.payload.pull_request.body || "";
+
+            const urlRegEx = new RegExp(`\\[${jiraTicketId}\\]`);
+            const ticketLinked = prBody.match(urlRegEx);
+
+            if (ticketLinked === null) {
+              prBody = `JIRA Ticket: [${jiraTicketId}](https://smartpension.atlassian.net/browse/${jiraTicketId}) \n\n` + prBody;
+
+              github.pulls.update({
+                owner: context.payload.pull_request.base.repo.owner.login,
+                repo: context.payload.pull_request.base.repo.name,
+                pull_number: context.payload.pull_request.number,
+                body: prBody,
+              })
+            }
